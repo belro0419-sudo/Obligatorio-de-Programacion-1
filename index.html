@@ -1,216 +1,218 @@
-<!-- Ivan De Leon , Belen Rodriguez -->
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de gestion </title>
-    <link rel="stylesheet" href="./css/estilos.css">
-</head>
-
-<body>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Influencers</title>
+    <link rel="stylesheet" href="/css/estilos.css" />
+  </head>
+  <body>
     <header>
-        <h1>Sistma de Gestión (Rodriguez -De Leon)</h1>
+      <h1>Sistema de Gestión (Rodríguez - De León)</h1>
     </header>
     <main>
-
-
-        <h2>Manejo de influencers </h2>
-        <section>
-            <article>
-                <h3>Alta de influencer </h3>
-                <button>Agregar influencer</button>
-            </article>
-            <article>
-                <h3> Datos de influencer a agregar </h3>
-                <h3>Influencer</h3>
-                <label for="nomInf">Nombre</label>
-                <input type="text" id="nomInf">
-                <label for="mail">Mail</label>
-                <input type="text" id="mail">
-                <label for="com">% Comision</label>
-                <input type="number" id="com">
-                <button class="datos-btn">Cancelar</button>
-                <button class="datos-btn">Agregar</button>
-            </article>
-            <article>
-                <h3> Tabla de influencers </h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th><button>Nombre↕</button></th>
-                            <th>Email </th>
-                            <th>% Comision</th>
-                            <th>Total a cobrar</th>
-                            <th>Etiquetas</th>
-                            <th>Detalle</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td> Ana Perez </td>
-                            <td>ana.perez@email.com</td>
-                            <td>20%</td>
-                            <td>$600</td>
-                            <td>🟢🔥</td>
-                            <td><button>Ventas</button></td>
-                        </tr>
-
-                        <tr>
-                            <td> Juan Gomez</td>
-                            <td>juan.gomez@email.com</td>
-                            <td>10%</td>
-                            <td>$30</td>
-                            <td></td>
-                            <td><button>Ventas</button></td>
-                        </tr>
-
-                        <tr>
-                            <td> Lucia Martinez </td>
-                            <td>lucia.gomez@email.com</td>
-                            <td>95%</td>
-                            <td>$0</td>
-                            <td>🧊</td>
-                            <td><button>Ventas</button> </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p> Informacion 🔥Top comiciones (cobro mas$) 🧊 Cero ventas 🟢Venta mas cara (mayor monto en una sola
-                    venta)</p>
-            </article>
-        </section>
-
-        <section>
-            <h2>Manejo de Articulos </h2>
-            <article>
-                <h3>Alta de Articulo<h3>
-                        <button>Agregar articulo</button>
-            </article>
-
-            <article>
-                <h3>Datos del artuclo a agregar </h3>
-                <h3>Articulo</h3>
-                <label for="codigo">Codigo</label>
-                <input type=“text" id=“codigo">
-                <label for=“descripcion">Descripcion</label>
-                <input type=“text" id="descripcion">
-                <label for=“precio">Precio</label>
-                <input type=“number" id=“precio">
-                <button class="datos-btn">cancelar</button>
-                <button class="datos-btn">Agregar</button>
-            </article>
-            <article>
-                <table>
-                    <thead>
-
-                        <tr>
-                            <th><button>Codigo </button></th>
-                            <th>Descripcion</th>
-                            <th>Precio</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <h3>Tabla de articulo</h3>
-                        <tr>
-                            <td>A001 ⭐</td>
-                            <td>Remera algodon basico</td>
-                            <td>$1000</td>
-                        </tr>
-                        <tr>
-                            <td>A002</td>
-                            <td>Zapatillas deportivas </td>
-                            <td>$300</td>
-                        </tr>
-                        <tr>
-                            <td>A003</td>
-                            <td> Gorra ajustable </td>
-                            <td>$500</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p>Informacion :⭐ Articulo mas vendido(mayor cantidad de unidades vendidas)
-            </article>
-        </section>
-        <secton>
-            <h2> Ventas</h2>
-            <article>
-                <h3> Alta de ventas </h3>
-                <button>Agregar venta </button>
-            </article>
-            <article>
-                <h3>Datos de la venta a agregar </h3>
-                <h3>Venta</h3>
-                <span>Nro: 3</span>
-                <label for="articulo">Articulo</label>
-                <select id="articulo">
-                    <option>A001</option>
-                    <option>A002</option>
-                    <option>A003</option>
-                </select>
-                <label for="influencer"> influencer</label>
-                <select id="influencer">
-                    <option>Ana Perez</option>
-                    <option>Juan Gomez</option>
-                    <option>Lucia Martinez</option>
-                </select>
-                <label for="cantidad">Cantidad</label>
-                <input type="text" id="cantidad">
-                <label for="medio">Medio</label>
-                <select id="medio">
-                    <option>1 instagram</option>
-                    <option>2 youtube </option>
-                    <option>3 X</option>
-                    <option>4 TikTok</option>
-                    <option>5 Facebook</option>
-                    <option>6 Otro</option>
-                </select>
-                <button class="datos-btn">cancelar</button>
-                <button class="datos-btn">Agregar</button>
-            </article>
-            <article>
-                <h3>Tabla de ventas(ordenada por numero de venta)</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Nro Venta </th>
-                            <th>Codigo de Articulo</th>
-                            <th>Nombre de Influencer</th>
-                            <th>Cantidad</th>
-                            <th>Medio</th>
-                            <th>Accion</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>A001</td>
-                            <td>Ana perez</td>
-                            <td>3</td>
-                            <td>1-Instragram</td>
-                            <td><button>❌</button></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>A002</td>
-                            <td>Juan Gomez</td>
-                            <td>1</td>
-                            <td>2-Youtube</td>
-                            <td><button>❌</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </article>
-        </secton>
-        <footer>
-            <p>====Belen Rodriguez N de estudiante= 373879====</p>
-            <p>====Ivan De Leon N de estudiante= 330339==== </p>
-            <p>==Linkedins==</p>
-            <a href="https://www.linkedin.com/in/belen-rodriguez-2a7148371/" target="_blank">Belen Rodriguez </a> <br>
-            <a href="https://www.linkedin.com/in/ivan-de-leon-lino/?isSelfProfile=false" target="_blank">Ivan De
-                Leon</a>
-        </footer>
-</body>
-
+      <h2>Manejo de influencers</h2>
+      <section>
+        <article>
+          <h3>Alta de influencer</h3>
+          <button>Agregar influencer</button>
+        </article>
+        <article>
+          <h3>Datos del influencer a agregar</h3>
+          <h3>Influencer</h3>
+          <label for="nomInf">Nombre</label>
+          <input type="text" id="nomInf" />
+          <label for="mail">Mail</label>
+          <input type="text" id="mail" />
+          <label for="com">% Comisión</label>
+          <input type="number" id="com" />
+          <button class="datos-btn">Cancelar</button>
+          <button class="datos-btn">Agregar</button>
+        </article>
+        <article>
+          <h3>Tabla de influencers</h3>
+          <table>
+            <thead>
+              <tr>
+                <th><button>Nombre ↕</button></th>
+                <th>Email</th>
+                <th>% Comisión</th>
+                <th>Total a cobrar</th>
+                <th>Etiquetas</th>
+                <th>Detalle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ana Pérez</td>
+                <td>ana.perez@email.com</td>
+                <td>20%</td>
+                <td>$600</td>
+                <td>🟢🔥</td>
+                <td><button>Ventas</button></td>
+              </tr>
+              <tr>
+                <td>Juan Gómez</td>
+                <td>juan.gomez@email.com</td>
+                <td>10%</td>
+                <td>$30</td>
+                <td></td>
+                <td><button>Ventas</button></td>
+              </tr>
+              <tr>
+                <td>Lucía Martínez</td>
+                <td>lucia.gomez@email.com</td>
+                <td>95%</td>
+                <td>$0</td>
+                <td>🧊</td>
+                <td><button>Ventas</button></td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            Información: 🔥Top comisiones (cobro más$) 🧊 Cero ventas 🟢Venta
+            más cara (mayor monto en una sola venta)
+          </p>
+        </article>
+      </section>
+      <section>
+        <h2>Manejo de Artículos</h2>
+        <article>
+          <h3>Alta de Artículo</h3>
+          <button>Agregar artículo</button>
+        </article>
+        <article>
+          <h3>Datos del artículo a agregar</h3>
+          <h4>Artículo</h4>
+          <label for="codigo">Código</label>
+          <input type="text" id="codigo" />
+          <label for="descripcion">Descripción</label>
+          <input type="text" id="descripcion" />
+          <label for="precio">Precio</label>
+          <input type="number" id="precio" />
+          <button class="datos-btn">Cancelar</button>
+          <button class="datos-btn">Agregar</button>
+        </article>
+        <article>
+          <h3>Tabla de artículos</h3>
+          <table class="tabla-articulos">
+            <thead>
+              <tr>
+                <th><button>Código ↕</button></th>
+                <th>Descripción</th>
+                <th>Precio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>A001 ⭐</td>
+                <td>Remera algodón básico</td>
+                <td>$1000</td>
+              </tr>
+              <tr>
+                <td>A002</td>
+                <td>Zapatillas deportivas</td>
+                <td>$300</td>
+              </tr>
+              <tr>
+                <td>A003</td>
+                <td>Gorra ajustable</td>
+                <td>$500</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            Información :⭐ Artículo más vendido(mayor cantidad de unidades
+            vendidas)
+          </p>
+        </article>
+      </section>
+      <section>
+        <h2>Ventas</h2>
+        <article>
+          <h3>Alta de ventas</h3>
+          <button>Agregar venta</button>
+        </article>
+        <article>
+          <h3>Datos de la venta a agregar</h3>
+          <h4>Venta</h4>
+          <span>Nro: 3</span>
+          <label for="articulo">Artículo</label>
+          <select id="articulo">
+            <option>A001</option>
+            <option>A002</option>
+            <option>A003</option>
+          </select>
+          <label for="influencer">influencer</label>
+          <select id="influencer">
+            <option>Ana Pérez</option>
+            <option>Juan Gómez</option>
+            <option>Lucía Martínez</option>
+          </select>
+          <label for="cantidad">Cantidad</label>
+          <input type="text" id="cantidad" />
+          <label for="medio">Medio</label>
+          <select id="medio">
+            <option>1 Instagram</option>
+            <option>2 YouTube</option>
+            <option>3 X</option>
+            <option>4 TikTok</option>
+            <option>5 Facebook</option>
+            <option>6 Otro</option>
+          </select>
+          <button class="datos-btn">Cancelar</button>
+          <button class="datos-btn">Agregar</button>
+        </article>
+        <article>
+          <h3>Tabla de ventas (ordenada por número de venta)</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Nro Venta</th>
+                <th>Código de Artículo</th>
+                <th>Nombre de Influencer</th>
+                <th>Cantidad</th>
+                <th>Medio</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>A001</td>
+                <td>Ana Pérez</td>
+                <td>3</td>
+                <td>1 - Instagram</td>
+                <td><button>❌</button></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>A002</td>
+                <td>Juan Gómez</td>
+                <td>1</td>
+                <td>2 - YouTube</td>
+                <td><button>❌</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+      </section>
+    </main>
+    <footer>
+      <h4>Belen Rodríguez - N.º de estudiante: 373879</h4>
+      <span class="footer-span">LinkedIn:</span>
+      <a
+        href="https://www.linkedin.com/in/belen-rodriguez-2a7148371/"
+        target="_blank"
+        >Belen Rodríguez</a
+      >
+      <h4>Iván De León - N.º de estudiante: 330339</h4>
+      <span class="footer-span">LinkedIn:</span>
+      <a
+        href="https://www.linkedin.com/in/ivan-de-leon-lino/?isSelfProfile=false"
+        target="_blank"
+        >Iván De León</a
+      >
+    </footer>
+  </body>
 </html>
