@@ -8,17 +8,24 @@
     <link rel="stylesheet" href="/css/estilos.css" />
   </head>
   <body>
-    <header>
-      <h1>Sistema de Gestión (Rodríguez - De León)</h1>
+    <!-- Header -->
+    <header class="header">
+      <h1 class="header__title">Sistema de Gestión (Rodríguez - De León)</h1>
     </header>
-    <main>
-      <h2>Manejo de influencers</h2>
-      <section>
-        <article>
+
+    <!-- Main Container -->
+    <main class="main">
+      <h2 class="main__title">Manejo de influencers</h2>
+
+      <!-- Influencers Section -->
+      <section class="influencers">
+        <article class="influencers__card">
           <h3>Alta de influencer</h3>
           <button>Agregar influencer</button>
         </article>
-        <article>
+
+        <!-- Influencers Form -->
+        <article class="influencers__card influencers__card--form">
           <h3>Datos del influencer a agregar</h3>
           <h3>Influencer</h3>
           <label for="nomInf">Nombre</label>
@@ -30,7 +37,9 @@
           <button class="datos-btn">Cancelar</button>
           <button class="datos-btn">Agregar</button>
         </article>
-        <article>
+
+        <!-- Influencers Table -->
+        <article class="influencers__card influencers__card--table">
           <h3>Tabla de influencers</h3>
           <table>
             <thead>
@@ -76,13 +85,17 @@
           </p>
         </article>
       </section>
-      <section>
-        <h2>Manejo de Artículos</h2>
-        <article>
+
+      <!-- Articles Section -->
+      <section class="articles">
+        <h2 class="articles__title">Manejo de Artículos</h2>
+        <article class="articles__card">
           <h3>Alta de Artículo</h3>
           <button>Agregar artículo</button>
         </article>
-        <article>
+
+        <!-- Articles Form -->
+        <article class="articles__card articles__card--form">
           <h3>Datos del artículo a agregar</h3>
           <h4>Artículo</h4>
           <label for="codigo">Código</label>
@@ -94,7 +107,9 @@
           <button class="datos-btn">Cancelar</button>
           <button class="datos-btn">Agregar</button>
         </article>
-        <article>
+
+        <!-- Articles Table -->
+        <article class="articles__card articles__card--table">
           <h3>Tabla de artículos</h3>
           <table class="tabla-articulos">
             <thead>
@@ -128,13 +143,17 @@
           </p>
         </article>
       </section>
-      <section>
-        <h2>Ventas</h2>
-        <article>
+
+      <!-- Sales Section -->
+      <section class="sales">
+        <h2 class="sales__title">Ventas</h2>
+        <article class="sales__card">
           <h3>Alta de ventas</h3>
           <button>Agregar venta</button>
         </article>
-        <article>
+
+        <!-- Sales Form -->
+        <article class="sales__card sales__card--form">
           <h3>Datos de la venta a agregar</h3>
           <h4>Venta</h4>
           <span>Nro: 3</span>
@@ -164,7 +183,9 @@
           <button class="datos-btn">Cancelar</button>
           <button class="datos-btn">Agregar</button>
         </article>
-        <article>
+
+        <!-- Sales Table -->
+        <article class="sales__card sales__card--table">
           <h3>Tabla de ventas (ordenada por número de venta)</h3>
           <table>
             <thead>
@@ -199,21 +220,27 @@
         </article>
       </section>
     </main>
-    <footer>
-      <h4>Belen Rodríguez - N.º de estudiante: 373879</h4>
-      <span class="footer-span">LinkedIn:</span>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <h4 class="footer__name">Belen Rodríguez - N.º de estudiante: 373879</h4>
+      <span class="footer__linkedin">LinkedIn:</span>
       <a
+        class="footer__link"
         href="https://www.linkedin.com/in/belen-rodriguez-2a7148371/"
         target="_blank"
         >Belen Rodríguez</a
       >
-      <h4>Iván De León - N.º de estudiante: 330339</h4>
-      <span class="footer-span">LinkedIn:</span>
+
+      <h4 class="footer__name">Iván De León - N.º de estudiante: 330339</h4>
+      <span class="footer__linkedin">LinkedIn:</span>
       <a
+        class="footer__link"
         href="https://www.linkedin.com/in/ivan-de-leon-lino/?isSelfProfile=false"
         target="_blank"
         >Iván De León</a
       >
     </footer>
+    <script src="script.js"></script>
   </body>
 </html>
