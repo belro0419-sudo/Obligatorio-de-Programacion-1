@@ -1,21 +1,36 @@
 // Show Modals
 
 // Variables
-const agregarInfluencerBtn = document.querySelector('.influencers__show-modal-btn'),
-      influencersDialog    = document.querySelector('.influencers__dialog');
-
-
-
-
-
-
-
-
-
+const agregarInfluencerBtn = document.querySelector(
+    ".influencers__show-modal-btn",
+  ),
+  influencersDialog = document.querySelector(".influencers__dialog"),
+  cerrarModalBtn = document.querySelector(".influencers__close-modal-btn"),
+  agregarArticuloBtn = document.querySelector(".articles__show-modal-btn"),
+  articuloDialog = document.querySelector(".articulo__dialog"),
+  cerrarArtModalBtn = document.querySelector(".articles__close-modal-btn"),
+  agregarSalesBtn = document.querySelector(".sales__show-modal-btn"),
+  salesDialog = document.querySelector(".sales__dialog"),
+  cerrarSalesModalBtn = document.querySelector(".sales__close-modal-btn");
 
 // Influencer Modal
-agregarInfluencerBtn.addEventListener('click', () => {
+agregarInfluencerBtn.addEventListener("click", () => {
   influencersDialog.showModal();
+});
+cerrarModalBtn.addEventListener("click", () => {
+  influencersDialog.close();
+});
+agregarArticuloBtn.addEventListener("click", () => {
+  articuloDialog.showModal();
+});
+cerrarArtModalBtn.addEventListener("click", () => {
+  articuloDialog.close();
+});
+agregarSalesBtn.addEventListener("click", () => {
+  salesDialog.showModal();
+});
+cerrarSalesModalBtn.addEventListener("click", () => {
+  salesDialog.close();
 });
 
 // TODO: Hacer que el <button class="button articles__table-button">Código ↕</button> ordene la tabla de forma ascendente a descendete y visceversa.

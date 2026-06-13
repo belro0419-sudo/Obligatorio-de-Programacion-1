@@ -19,10 +19,11 @@
 
       <!-- Influencers Section -->
       <section class="influencers">
-
         <article class="influencers__card">
           <h3 class="influencers__title">Alta de influencer</h3>
-          <button class="button influencers__show-modal-btn">Agregar influencer</button>
+          <button class="button influencers__show-modal-btn">
+            Agregar influencer
+          </button>
         </article>
 
         <dialog class="influencers__dialog">
@@ -34,8 +35,10 @@
           <input class="influencers__input" type="text" id="mail" />
           <label class="influencers__label" for="com">% Comisión</label>
           <input class="influencers__input" type="number" id="com" />
-          <button class="button influencers__button">Cancelar</button>
-          <button class="button influencers__button">Agregar</button>
+          <button class="button influencers__close-modal-btn">Cancelar</button>
+          <button class="button influencers__add-influencer-btn">
+            Agregar
+          </button>
         </dialog>
 
         <!-- Influencers Table Card -->
@@ -74,10 +77,12 @@
         <article class="articles__card">
           <!-- Alta de Articulo -->
           <h3 class="articles__title">Alta de Artículo</h3>
-          <button class="button articles__button">Agregar artículo</button>
+          <button class="button articles__show-modal-btn">
+            Agregar artículo
+          </button>
         </article>
 
-        <dialog>
+        <dialog class="articulo__dialog">
           <h3 class="articles__title">Datos del artículo a agregar</h3>
           <h4 class="article__subtitle">Artículo</h4>
           <label class="articles__label" for="codigo">Código</label>
@@ -86,8 +91,8 @@
           <input class="articles__input" type="text" id="descripcion" />
           <label class="articles__label" for="precio">Precio</label>
           <input class="articles__input" type="number" id="precio" />
-          <button class="button articles__button">Cancelar</button>
-          <button class="button articles__button">Agregar</button>
+          <button class="button articles__close-modal-btn">Cancelar</button>
+          <button class="button articles__add-modal-btn">Agregar</button>
         </dialog>
 
         <!-- Articles Table Card -->
@@ -120,10 +125,10 @@
         <h2 class="sales__title">Ventas</h2>
         <article class="sales__card">
           <h3 class="sales__subtitle">Alta de ventas</h3>
-          <button class="button sales__button">Agregar venta</button>
+          <button class="button sales__show-modal-btn">Agregar venta</button>
         </article>
 
-        <dialog>
+        <dialog class="sales__dialog">
           <h3 class="sales__subtitle">Datos de la venta a agregar</h3>
           <h4 class="sales__sale">Venta</h4>
           <span class="sales__article-number">Nro: 3</span>
@@ -150,8 +155,8 @@
             <option class="sales__source">5 Facebook</option>
             <option class="sales__source">6 Otro</option>
           </select>
-          <button class="button sales__button">Cancelar</button>
-          <button class="button sales__button">Agregar</button>
+          <button class="button sales__close-modal-btn">Cancelar</button>
+          <button class="button sales__add-modal-btn">Agregar</button>
         </dialog>
 
         <!-- Sales Table Card -->
