@@ -9,8 +9,8 @@
   </head>
   <body>
     <!-- Header -->
-    <header class="header">
-      <h1 class="header__title">Sistema de Gestión (Rodríguez - De León)</h1>
+    <header class="hero">
+      <h1 class="hero__title">Sistema de Gestión (Rodríguez - De León)</h1>
     </header>
 
     <!-- Main Container -->
@@ -21,64 +21,45 @@
       <section class="influencers">
         <article class="influencers__card">
           <h3 class="influencers__title">Alta de influencer</h3>
-          <button class="influencers__button button">Agregar influencer</button>
+          <button class="button influencers__button">Agregar influencer</button>
         </article>
 
-        <!-- Influencers Form -->
-        <article class="influencers__card influencers__card--form">
+        <dialog>
           <h3 class="influencers__title">Datos del influencer a agregar</h3>
-          <h3 class="Influencers__subtitle">Influencer</h3>
+          <h3 class="influencers__subtitle">Influencer</h3>
           <label class="influencers__label">Nombre</label>
           <input class="influencers__input" type="text" id="nomInf" />
           <label class="influencers__label" for="mail">Mail</label>
           <input class="influencers__input" type="text" id="mail" />
           <label class="influencers__label" for="com">% Comisión</label>
           <input class="influencers__input" type="number" id="com" />
-          <button class="influencers__button button">Cancelar</button>
-          <button class="influencers__button button">Agregar</button>
-        </article>
+          <button class="button influencers__button">Cancelar</button>
+          <button class="button influencers__button">Agregar</button>
+        </dialog>
 
-        <!-- Influencers Table -->
-        <article class="influencers__card influencers__card--table">
+        <!-- Influencers Table Card -->
+        <article class="influencers__card">
           <h3 class="influencers__title">Tabla de influencers</h3>
+
+          <!-- Influencers Table -->
           <table class="influencers__table">
-            <thead class="influencers__thead">
-              <tr class="influencers__tr">
-                <th class="influencers__th"><button class="influencers__button button">Nombre ↕</button></th>
-                <th class="influencers__th" >Email</th>
-                <th class="influencers__th">% Comisión</th>
-                <th class="influencers__th">Total a cobrar</th>
-                <th class="influencers__th">Etiquetas</th>
-                <th class="influencers__th">Detalle</th>
+            <!-- Influencers Table Head -->
+            <thead class="influencers__table-head">
+              <tr class="influencers__table-row">
+                <th class="influencers__table-header">
+                  <button class="button influencers__table-button">
+                    Nombre ↕
+                  </button>
+                </th>
+                <th class="influencers__table-header">Email</th>
+                <th class="influencers__table-header">% Comisión</th>
+                <th class="influencers__table-header">Total a cobrar</th>
+                <th class="influencers__table-header">Etiquetas</th>
+                <th class="influencers__table-header">Detalle</th>
               </tr>
             </thead>
-            <tbody class="influencers__tbody">
-              <tr class="influencers__tr">
-                <td class="influencers__td">Ana Pérez</td>
-                <td class="influencers__td">ana.perez@email.com</td>
-                <td class="influencers__td">20%</td>
-                <td class="influencers__td">$ 600</td>
-                <td class="influencers__td">🟢🔥</td>
-                <td class="influencers__td"><button>Ventas</button></td>
-              </tr>
-              <tr class="influencers__tr">
-                <td class="influencers__td">Juan Gómez</td>
-                <td class="influencers__td">juan.gomez@email.com</td>
-                <td class="influencers__td">10%</td>
-                <td class="influencers__td">$ 30</td>
-                <td class="influencers__td"></td>
-                <td class="influencers__td"><button>Ventas</button></td>
-              </tr>
-              <tr class="influencers__td">
-                <td class="influencers__td">Lucía Martínez</td>
-                <td class="influencers__td">lucia.gomez@email.com</td>
-                <td class="influencers__td">95%</td>
-                <td class="influencers__td">$ 0</td>
-                <td class="influencers__td">🧊</td>
-                <td class="influencers__td"><button>Ventas</button></td>
-              </tr>
-            </tbody>
           </table>
+
           <p class="influencers__information">
             Información: 🔥Top comisiones (cobro más$) 🧊 Cero ventas 🟢Venta
             más cara (mayor monto en una sola venta)
@@ -90,54 +71,43 @@
       <section class="articles">
         <h2 class="articles__title">Manejo de Artículos</h2>
         <article class="articles__card">
-          <h3>Alta de Artículo</h3>
-          <button>Agregar artículo</button>
+          <!-- Alta de Articulo -->
+          <h3 class="articles__title">Alta de Artículo</h3>
+          <button class="button articles__button">Agregar artículo</button>
         </article>
 
-        <!-- Articles Form -->
-        <article class="articles__card articles__card--form">
-          <h3>Datos del artículo a agregar</h3>
-          <h4>Artículo</h4>
-          <label for="codigo">Código</label>
-          <input type="text" id="codigo" />
-          <label for="descripcion">Descripción</label>
-          <input type="text" id="descripcion" />
-          <label for="precio">Precio</label>
-          <input type="number" id="precio" />
-          <button class="datos-btn">Cancelar</button>
-          <button class="datos-btn">Agregar</button>
-        </article>
+        <dialog>
+          <h3 class="articles__title">Datos del artículo a agregar</h3>
+          <h4 class="article__subtitle">Artículo</h4>
+          <label class="articles__label" for="codigo">Código</label>
+          <input class="articles__input" type="text" id="codigo" />
+          <label class="articles__label" for="descripcion">Descripción</label>
+          <input class="articles__input" type="text" id="descripcion" />
+          <label class="articles__label" for="precio">Precio</label>
+          <input class="articles__input" type="number" id="precio" />
+          <button class="button articles__button">Cancelar</button>
+          <button class="button articles__button">Agregar</button>
+        </dialog>
 
-        <!-- Articles Table -->
+        <!-- Articles Table Card -->
         <article class="articles__card articles__card--table">
-          <h3>Tabla de artículos</h3>
-          <table class="tabla-articulos">
-            <thead>
-              <tr>
-                <th><button>Código ↕</button></th>
-                <th>Descripción</th>
-                <th>Precio</th>
+          <h3 class="articles__title">Tabla de artículos</h3>
+
+          <!-- Articles Table -->
+          <table class="articles__table">
+            <thead class="article__table-head">
+              <tr class="article__table-row">
+                <th class="article__table-header">
+                  <button class="button articles__table-button">
+                    Código ↕
+                  </button>
+                </th>
+                <th class="articles__table-header">Descripción</th>
+                <th class="articles__table-header">Precio</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>A001 ⭐</td>
-                <td>Remera algodón básico</td>
-                <td>$1000</td>
-              </tr>
-              <tr>
-                <td>A002</td>
-                <td>Zapatillas deportivas</td>
-                <td>$300</td>
-              </tr>
-              <tr>
-                <td>A003</td>
-                <td>Gorra ajustable</td>
-                <td>$500</td>
-              </tr>
-            </tbody>
           </table>
-          <p>
+          <p class="articles__information">
             Información :⭐ Artículo más vendido(mayor cantidad de unidades
             vendidas)
           </p>
@@ -148,74 +118,59 @@
       <section class="sales">
         <h2 class="sales__title">Ventas</h2>
         <article class="sales__card">
-          <h3>Alta de ventas</h3>
-          <button>Agregar venta</button>
+          <h3 class="sales__subtitle">Alta de ventas</h3>
+          <button class="button sales__button">Agregar venta</button>
         </article>
 
-        <!-- Sales Form -->
-        <article class="sales__card sales__card--form">
-          <h3>Datos de la venta a agregar</h3>
-          <h4>Venta</h4>
-          <span>Nro: 3</span>
-          <label for="articulo">Artículo</label>
-          <select id="articulo">
-            <option>A001</option>
-            <option>A002</option>
-            <option>A003</option>
+        <dialog>
+          <h3 class="sales__subtitle">Datos de la venta a agregar</h3>
+          <h4 class="sales__sale">Venta</h4>
+          <span class="sales__article-number">Nro: 3</span>
+          <label class="sales__label" for="articulo">Artículo</label>
+          <select class="sales__select" id="articulo">
+            <option class="sales__article">A001</option>
+            <option class="sales__article">A002</option>
+            <option class="sales__article">A003</option>
           </select>
-          <label for="influencer">influencer</label>
-          <select id="influencer">
-            <option>Ana Pérez</option>
-            <option>Juan Gómez</option>
-            <option>Lucía Martínez</option>
+          <label class="sales__label" for="influencer">influencer</label>
+          <select class="sales__select" id="influencer">
+            <option class="sales__influencer">Ana Pérez</option>
+            <option class="sales__influencer">Juan Gómez</option>
+            <option class="sales__influencer">Lucía Martínez</option>
           </select>
-          <label for="cantidad">Cantidad</label>
-          <input type="text" id="cantidad" />
-          <label for="medio">Medio</label>
-          <select id="medio">
-            <option>1 Instagram</option>
-            <option>2 YouTube</option>
-            <option>3 X</option>
-            <option>4 TikTok</option>
-            <option>5 Facebook</option>
-            <option>6 Otro</option>
+          <label class="sales__label" for="cantidad">Cantidad</label>
+          <input class="sales__input" type="text" id="cantidad" />
+          <label class="sales__label" for="medio">Medio</label>
+          <select class="sales__select" id="medio">
+            <option class="sales__source">1 Instagram</option>
+            <option class="sales__source">2 YouTube</option>
+            <option class="sales__source">3 X</option>
+            <option class="sales__source">4 TikTok</option>
+            <option class="sales__source">5 Facebook</option>
+            <option class="sales__source">6 Otro</option>
           </select>
-          <button class="datos-btn">Cancelar</button>
-          <button class="datos-btn">Agregar</button>
-        </article>
+          <button class="button sales__button">Cancelar</button>
+          <button class="button sales__button">Agregar</button>
+        </dialog>
 
-        <!-- Sales Table -->
+        <!-- Sales Table Card -->
         <article class="sales__card sales__card--table">
-          <h3>Tabla de ventas (ordenada por número de venta)</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Nro Venta</th>
-                <th>Código de Artículo</th>
-                <th>Nombre de Influencer</th>
-                <th>Cantidad</th>
-                <th>Medio</th>
-                <th>Acción</th>
+          <h3 class="sales__subtitle">
+            Tabla de ventas (ordenada por número de venta)
+          </h3>
+
+          <!-- Sales Table -->
+          <table class="sales__table">
+            <thead class="sales__table-head">
+              <tr class="sales__table-row">
+                <th class="sales__table-header">Nro Venta</th>
+                <th class="sales__table-header">Código de Artículo</th>
+                <th class="sales__table-header">Nombre de Influencer</th>
+                <th class="sales__table-header">Cantidad</th>
+                <th class="sales__table-header">Medio</th>
+                <th class="sales__table-header">Acción</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>A001</td>
-                <td>Ana Pérez</td>
-                <td>3</td>
-                <td>1 - Instagram</td>
-                <td><button>❌</button></td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>A002</td>
-                <td>Juan Gómez</td>
-                <td>1</td>
-                <td>2 - YouTube</td>
-                <td><button>❌</button></td>
-              </tr>
-            </tbody>
           </table>
         </article>
       </section>
