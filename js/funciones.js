@@ -1,3 +1,23 @@
+// Show Modals
+
+// Variables
+const agregarInfluencerBtn = document.querySelector('.influencers__show-modal-btn'),
+      influencersDialog    = document.querySelector('.influencers__dialog');
+
+
+
+
+
+
+
+
+
+
+// Influencer Modal
+agregarInfluencerBtn.addEventListener('click', () => {
+  influencersDialog.showModal();
+});
+
 // TODO: Hacer que el <button class="button articles__table-button">Código ↕</button> ordene la tabla de forma ascendente a descendete y visceversa.
 /* TODO: Investigar como hacer la grafica de burbujas.
 - Debe representar seis valores numericos

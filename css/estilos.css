@@ -46,6 +46,7 @@ button {
   margin: 3px;
   font-size: 10px;
   font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
 }
 
 .datos-btn {
@@ -115,3 +116,20 @@ a {
     font-weight: bold;
     margin-right: 5px;
 }
+
+.influencers__title:hover::after {
+  visibility: visible;
+}
+
+.influencers__title::after {
+  content: "";
+  position: absolute;
+  visibility: hidden;
+  background-color: red ;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+
+
