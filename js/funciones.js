@@ -1,158 +1,218 @@
-// Ana Belen Rodriguez Berriel / N° de estudiante: 373879 -  Iván De León Lino / N° de estudiante: 330339
+// Ana Belen Rodriguez Berriel / N° de estudiante: 373879 - Iván De León Lino / N° de estudiante: 330339
 
-// Show Modals
+let sistema = new Sistema();
 
-// Variables
-//zona de influencers
-const agregarInfluencerBtn = document.querySelector(
-    ".influencers__show-modal-btn",
-  ),
-  influencersDialog = document.querySelector(".influencers__dialog"),
-  cerrarModalBtn = document.querySelector(".influencers__close-modal-btn"),
-  addInfluenceTableBtn = document.querySelector(
-    ".influencers__add-influencer-btn",
-  ),
-  //zona de articulos
-  agregarArticuloBtn = document.querySelector(".articles__show-modal-btn"),
-  articuloDialog = document.querySelector(".articulo__dialog"),
-  cerrarArtModalBtn = document.querySelector(".articles__close-modal-btn"),
-  addArticleTableBtn = document.querySelector(".articles__add-modal-btn"),
-  //zona de sales
-  agregarSalesBtn = document.querySelector(".sales__show-modal-btn"),
-  salesDialog = document.querySelector(".sales__dialog"),
-  cerrarSalesModalBtn = document.querySelector(".sales__close-modal-btn"),
-  addASalesTableBtn = document.querySelector(".sales__add-modal-btn");
+const showInfluencerModalBtn = document.querySelector(".influencers__show-modal-btn");
+const showArticleModalBtn = document.querySelector(".articles__show-modal-btn");
+const showSaleModalBtn = document.querySelector(".sales__show-modal-btn");
 
-// Influencer Modal
-agregarInfluencerBtn.addEventListener("click", () => {
-  influencersDialog.showModal();
-});
-cerrarModalBtn.addEventListener("click", () => {
-  influencersDialog.close();
-});
-agregarArticuloBtn.addEventListener("click", () => {
-  articuloDialog.showModal();
-});
-cerrarArtModalBtn.addEventListener("click", () => {
-  articuloDialog.close();
-});
-agregarSalesBtn.addEventListener("click", () => {
-  salesDialog.showModal();
-});
-cerrarSalesModalBtn.addEventListener("click", () => {
-  salesDialog.close();
-});
+const influencerDialog = document.querySelector(".influencers__dialog");
+const articleDialog = document.querySelector(".articles__dialog");
+const saleDialog = document.querySelector(".sales__dialog");
 
-//crear tabla influencer
-const tablaInfluencers = document.querySelector(".influencers__table-body");
+const closeInfluencerModalBtn = document.querySelector(".influencers__close-modal-btn");
+const closeArticleModalBtn = document.querySelector(".articles__close-modal-btn");
+const closeSaleModalBtn = document.querySelector(".sales__close-modal-btn");
 
-addInfluenceTableBtn.addEventListener("click", () => {
+const addInfluencerBtn = document.querySelector(".influencers__add-influencer-btn");
+const addArticleBtn = document.querySelector(".articles__add-article-btn");
+const addSaleBtn = document.querySelector(".sales__add-sale-btn");
 
-  const nombre   = document.querySelector("#nomInf").value;
-  const mail     = document.querySelector("#mail").value;
-  const comision = document.querySelector("#com").value;
-  
-  const fila     = document.createElement("tr");
+const influencerNameInput = document.querySelector(".influencers__name-input");
+const influencerMailInput = document.querySelector(".influencers__mail-input");
+const influencerCommissionInput = document.querySelector(".influencers__commission-input");
 
-  fila.innerHTML = `
-    <td>${nombre}</td>
-    <td>${mail}</td>
-    <td>${comision}%</td>
-    <td>$0</td>
-    <td>-</td> 
-    <td>
-      <button class="button influencers__table-delete-btn">Eliminar</button>
-    </td>
-  `;
-  tablaInfluencers.appendChild(fila);
-  influencersDialog.close();
-  document.querySelector("#nomInf").value = "";
-  document.querySelector("#mail").value = "";
-  document.querySelector("#com").value = "";
-});
+const articleCodeInput = document.querySelector(".articles__code-input");
+const articleDescriptionInput = document.querySelector(".articles__description-input");
+const articlePriceInput = document.querySelector(".articles__price-input");
 
-tablaInfluencers.addEventListener("click", (e) => {
+const saleArticleSelect = document.querySelector(".sales__article-select");
+const saleInfluencerSelect = document.querySelector(".sales__influencer-select");
+const saleQuantityInput = document.querySelector(".sales__quantity-input");
+const saleMediumSelect = document.querySelector(".sales__medium-select");
+const saleNumberSpan = document.querySelector(".sales__article-number");
 
-  if (e.target.classList.contains("influencers__table-delete-btn")) {
-    e.target.parentElement.parentElement.remove();}
+const influencersTableBody = document.querySelector(".influencers__table-body");
+const articlesTableBody = document.querySelector(".articles__table-body");
+const salesTableBody = document.querySelector(".sales__table-body");
 
-})
+const mostrarModalInfluencer = () => {
+  influencerDialog.showModal();
+};
 
+const cerrarModalInfluencer = () => {
+  influencerDialog.close();
+};
 
-// Boton ordenar por nombre
-const sortBtn = document.querySelector(".influencers__table-button");
-let ascendente = true;
+const mostrarModalArticulo = () => {
+  articleDialog.showModal();
+};
 
-sortBtn.addEventListener("click", () => {
-  
-  const filas = Array.from(tablaInfluencers.rows);
+const cerrarModalArticulo = () => {
+  articleDialog.close();
+};
 
-  filas.sort((filaUno, filaDos) => {
-    const nombreA = filaUno.cells[0].textContent;
-    const nombreB = filaDos.cells[0].textContent;
+const mostrarModalVenta = () => {
+  if (sistema.articulos.length === 0 || sistema.influencers.length === 0) {
+    alert("Debe existir al menos un artículo y un influencer para registrar una venta");
+  } else {
+    saleNumberSpan.textContent = "Nro: " + sistema.proximoNumeroVenta;
+    saleDialog.showModal();
+  }
+};
 
-    if (ascendente) {
-      return nombreA.localeCompare(nombreB, "es");
-    } else {
-      return nombreB.localeCompare(nombreA, "es");
-    }
-    });
+const cerrarModalVenta = () => {
+  saleDialog.close();
+};
 
-    filas.forEach((fila) => tablaInfluencers.appendChild(fila));
-    ascendente = !ascendente
-});
+const agregarInfluencer = () => {
+  let nombre = influencerNameInput.value;
+  let mail = influencerMailInput.value;
+  let comision = Number(influencerCommissionInput.value);
 
+  if (nombre === "" || mail === "" || comision === 0) {
+    alert("Todos los campos son obligatorios");
+  } else if (sistema.existeMail(mail)) {
+    alert("Ya existe un influencer con ese mail");
+  } else {
+    sistema.agregarInfluencer(nombre, mail, comision);
 
+    influencerNameInput.value = "";
+    influencerMailInput.value = "";
+    influencerCommissionInput.value = "";
 
+    actualizarTablaInfluencers();
+    actualizarSelectInfluencers();
+  }
+};
 
-//crear tabla articul
-const tablaArticle = document.querySelector(".articles__table");
-addArticleTableBtn.addEventListener("click", () => {
-  const codigo = document.querySelector("#codigo").value;
-  const descripcion = document.querySelector("#descripcion").value;
-  const precio = document.querySelector("#precio").value;
-  const fila = document.createElement("tr");
-  fila.innerHTML = `
-    <td>${codigo}</td>
-    <td>${descripcion}</td>
-    <td>${precio}</td>
-  `;
-  tablaArticle.appendChild(fila);
-  articuloDialog.close();
-  document.querySelector("#codigo").value = "";
-  document.querySelector("#descripcion").value = "";
-  document.querySelector("#precio").value = "";
-});
-//crea tabla de sales
-let numeroVentas = 1;
-const tablaSales = document.querySelector(".sales__table");
-addASalesTableBtn.addEventListener("click", () => {
-  const codArt = document.querySelector("#articulo").value;
-  const nomInf = document.querySelector("#influencer").value;
-  const cantidad = document.querySelector("#cantidad").value;
-  const medio = document.querySelector("#medio").value;
-  const fila = document.createElement("tr");
-  fila.innerHTML = `
-    <td>${numeroVentas}</td>
-    <td>${codArt}</td>
-    <td>${nomInf}</td>
-    <td>${cantidad}</td>
-    <td>${medio}</td>
-    <td>
-      <button class="button">Eliminar</button>
-    </td>
-`;
-  tablaSales.appendChild(fila);
-  numeroVentas++;
-  salesDialog.close();
-});
-// TODO: Hacer que el <button class="button articles__table-button">Código ↕</button> ordene la tabla de forma ascendente a descendete y visceversa.
-/* TODO: Investigar como hacer la grafica de burbujas.
-- Debe representar seis valores numericos
-- El equipo deberá investigar cómo generar la gráfica de burbujas de colores. Se debe mostrar una gráfica de burbujas que
-represente seis valores numéricos. Cada burbuja corresponde al total de ventas de ese medio y su tamaño es proporcional al
-monto representado: la burbuja asociada al valor mínimo debe tener un radio equivalente al 10 % del radio máximo,
-mientras que la burbuja asociada al valor máximo debe tener el 100 % del radio máximo.
-Las demás burbujas deben escalarse de forma proporcional entre esos extremos. Debe indicarse el monto de cada burbuja.
-Los colores son a elección. Deben quedar alineadas.
-*/
+const actualizarTablaInfluencers = () => {
+  influencersTableBody.innerHTML = "";
+
+  for (let i = 0; i < sistema.influencers.length; i++) {
+    let influencer = sistema.influencers[i];
+
+    influencersTableBody.innerHTML += `
+      <tr>
+        <td>${influencer.nombre}</td>
+        <td>${influencer.mail}</td>
+        <td>${influencer.comision}%</td>
+        <td>$0</td>
+        <td></td>
+        <td><button type="button">Ventas</button></td>
+      </tr>
+    `;
+  }
+};
+
+const actualizarSelectInfluencers = () => {
+  saleInfluencerSelect.innerHTML = "";
+
+  for (let i = 0; i < sistema.influencers.length; i++) {
+    let influencer = sistema.influencers[i];
+
+    saleInfluencerSelect.innerHTML += `
+      <option value="${influencer.mail}">${influencer.nombre}</option>
+    `;
+  }
+};
+
+const agregarArticulo = () => {
+  let codigo = articleCodeInput.value;
+  let descripcion = articleDescriptionInput.value;
+  let precio = Number(articlePriceInput.value);
+
+  if (codigo === "" || descripcion === "" || precio === 0) {
+    alert("Todos los campos son obligatorios");
+  } else if (sistema.existeCodigo(codigo)) {
+    alert("Ya existe un artículo con ese código");
+  } else {
+    sistema.agregarArticulo(codigo, descripcion, precio);
+
+    articleCodeInput.value = "";
+    articleDescriptionInput.value = "";
+    articlePriceInput.value = "";
+
+    actualizarTablaArticulos();
+    actualizarSelectArticulos();
+  }
+};
+
+const actualizarTablaArticulos = () => {
+  articlesTableBody.innerHTML = "";
+
+  for (let i = 0; i < sistema.articulos.length; i++) {
+    let articulo = sistema.articulos[i];
+
+    articlesTableBody.innerHTML += `
+      <tr>
+        <td>${articulo.codigo}</td>
+        <td>${articulo.descripcion}</td>
+        <td>$${articulo.precio}</td>
+      </tr>
+    `;
+  }
+};
+
+const actualizarSelectArticulos = () => {
+  saleArticleSelect.innerHTML = "";
+
+  for (let i = 0; i < sistema.articulos.length; i++) {
+    let articulo = sistema.articulos[i];
+
+    saleArticleSelect.innerHTML += `
+      <option value="${articulo.codigo}">${articulo.codigo}</option>
+    `;
+  }
+};
+
+const agregarVenta = () => {
+  let codigoArticulo = saleArticleSelect.value;
+  let mailInfluencer = saleInfluencerSelect.value;
+  let cantidad = Number(saleQuantityInput.value);
+  let medio = Number(saleMediumSelect.value);
+
+  let articulo = sistema.buscarArticulo(codigoArticulo);
+  let influencer = sistema.buscarInfluencer(mailInfluencer);
+
+  if (cantidad === 0) {
+    alert("La cantidad es obligatoria");
+  } else {
+    sistema.agregarVenta(articulo, influencer, cantidad, medio);
+
+    saleQuantityInput.value = "";
+
+    actualizarTablaVentas();
+  }
+};
+
+const actualizarTablaVentas = () => {
+  salesTableBody.innerHTML = "";
+
+  for (let i = 0; i < sistema.ventas.length; i++) {
+    let venta = sistema.ventas[i];
+
+    salesTableBody.innerHTML += `
+      <tr>
+        <td>${venta.numero}</td>
+        <td>${venta.articulo.codigo}</td>
+        <td>${venta.influencer.nombre}</td>
+        <td>${venta.cantidad}</td>
+        <td>${venta.textoMedio()}</td>
+        <td><button type="button">Eliminar</button></td>
+      </tr>
+    `;
+  }
+};
+
+showInfluencerModalBtn.addEventListener("click", mostrarModalInfluencer);
+showArticleModalBtn.addEventListener("click", mostrarModalArticulo);
+showSaleModalBtn.addEventListener("click", mostrarModalVenta);
+
+closeInfluencerModalBtn.addEventListener("click", cerrarModalInfluencer);
+closeArticleModalBtn.addEventListener("click", cerrarModalArticulo);
+closeSaleModalBtn.addEventListener("click", cerrarModalVenta);
+
+addInfluencerBtn.addEventListener("click", agregarInfluencer);
+addArticleBtn.addEventListener("click", agregarArticulo);
+addSaleBtn.addEventListener("click", agregarVenta);

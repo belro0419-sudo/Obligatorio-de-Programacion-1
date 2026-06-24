@@ -1,11 +1,10 @@
-// Ana Belen Rodriguez Berriel / N° de estudiante: 373879 -  Iván De León Lino / N° de estudiante: 330339
+// Ana Belen Rodriguez Berriel / N° de estudiante: 373879 - Iván De León Lino / N° de estudiante: 330339
 
 class Sistema {
   constructor() {
     this.influencers = [];
     this.articulos = [];
     this.ventas = [];
-    // TODO: Arreglar el tema del toLowerCase() repetido
     this.proximoNumeroVenta = 1;
   }
 
@@ -13,7 +12,6 @@ class Sistema {
     mail = mail.toLowerCase();
 
     let influencer = new Influencer(nombre, mail, comision);
-
     this.influencers.push(influencer);
   }
 
@@ -28,7 +26,7 @@ class Sistema {
       articulo,
       influencer,
       cantidad,
-      medio,
+      medio
     );
 
     this.ventas.push(venta);
@@ -46,7 +44,6 @@ class Sistema {
 
   existeMail(mail) {
     mail = mail.toLowerCase();
-
     let existe = false;
 
     for (let i = 0; i < this.influencers.length; i++) {
@@ -82,10 +79,8 @@ class Sistema {
     return articuloBuscado;
   }
 
-  // TODO: Volver a revisar esta funcion
   buscarInfluencer(mail) {
     mail = mail.toLowerCase();
-
     let influencerBuscado = null;
 
     for (let i = 0; i < this.influencers.length; i++) {
@@ -132,11 +127,11 @@ class Venta {
   }
 
   nombreMedio() {
-    let medios = ['Instagram', 'YouTube', 'X', 'TikTok', 'Facebook', 'Otras'];
+    let medios = ["Instagram", "YouTube", "X", "TikTok", "Facebook", "Otras"];
     return medios[this.medio - 1];
   }
 
   textoMedio() {
-    return this.medio + ' - ' + this.nombreMedio();
+    return this.medio + " - " + this.nombreMedio();
   }
 }

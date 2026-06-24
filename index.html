@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Influencers</title>
-    <link rel="stylesheet" href="/css/estilos.css" />
+    <link rel="stylesheet" href="./css/estilos.css" />
   </head>
   <body>
     <!-- Header -->
@@ -15,7 +15,6 @@
 
     <!-- Main Container -->
     <main class="main">
-
       <h2 class="main__title">Manejo de influencers</h2>
 
       <!-- Influencers Section -->
@@ -30,12 +29,16 @@
         <dialog class="influencers__dialog">
           <h3 class="influencers__title">Datos del influencer a agregar</h3>
           <h3 class="influencers__subtitle">Influencer</h3>
-          <label class="influencers__label">Nombre</label>
-          <input class="influencers__input" type="text" id="nomInf" />
-          <label class="influencers__label" for="">Mail</label>
-          <input class="influencers__input" type="email" id="mail" />
-          <label class="influencers__label" for="com">% Comisión</label>
-          <input class="influencers__input" type="number" id="com" />
+
+          <label class="influencers__label" for="influencers__name-input">Nombre</label>
+          <input required class="influencers__input influencers__name-input" type="text" id="influencers__name-input" />
+
+          <label class="influencers__label" for="influencers__mail-input">Mail</label>
+          <input class="influencers__input influencers__mail-input" type="email" id="influencers__mail-input" />
+
+          <label class="influencers__label" for="influencers__commission-input">% Comisión</label>
+          <input class="influencers__input influencers__commission-input" type="number" id="influencers__commission-input" />
+
           <button class="button influencers__close-modal-btn">Cancelar</button>
           <button class="button influencers__add-influencer-btn">
             Agregar
@@ -76,6 +79,7 @@
       <!-- Articles Section -->
       <section class="articles">
         <h2 class="articles__title">Manejo de Artículos</h2>
+
         <article class="articles__card">
           <!-- Alta de Articulo -->
           <h3 class="articles__title">Alta de Artículo</h3>
@@ -84,17 +88,21 @@
           </button>
         </article>
 
-        <dialog class="articulo__dialog">
+        <dialog class="articles__dialog">
           <h3 class="articles__title">Datos del artículo a agregar</h3>
-          <h4 class="article__subtitle">Artículo</h4>
-          <label class="articles__label" for="codigo">Código</label>
-          <input class="articles__input" type="text" id="codigo" />
-          <label class="articles__label" for="descripcion">Descripción</label>
-          <input class="articles__input" type="text" id="descripcion" />
-          <label class="articles__label" for="precio">Precio</label>
-          <input class="articles__input" type="number" id="precio" />
+          <h4 class="articles__subtitle">Artículo</h4>
+
+          <label class="articles__label" for="articles__code-input">Código</label>
+          <input class="articles__input articles__code-input" type="text" id="articles__code-input" />
+
+          <label class="articles__label" for="articles__description-input">Descripción</label>
+          <input class="articles__input articles__description-input" type="text" id="articles__description-input" />
+
+          <label class="articles__label" for="articles__price-input">Precio</label>
+          <input class="articles__input articles__price-input" type="number" id="articles__price-input" />
+
           <button class="button articles__close-modal-btn">Cancelar</button>
-          <button class="button articles__add-modal-btn">Agregar</button>
+          <button class="button articles__add-article-btn">Agregar</button>
         </dialog>
 
         <!-- Articles Table Card -->
@@ -103,9 +111,9 @@
 
           <!-- Articles Table -->
           <table class="articles__table">
-            <thead class="article__table-head">
-              <tr class="article__table-row">
-                <th class="article__table-header">
+            <thead class="articles__table-head">
+              <tr class="articles__table-row">
+                <th class="articles__table-header">
                   <button class="button articles__table-button">
                     Código ↕
                   </button>
@@ -116,6 +124,7 @@
             </thead>
             <tbody class="articles__table-body"></tbody>
           </table>
+
           <p class="articles__information">
             Información :⭐ Artículo más vendido(mayor cantidad de unidades
             vendidas)
@@ -126,6 +135,7 @@
       <!-- Sales Section -->
       <section class="sales">
         <h2 class="sales__title">Ventas</h2>
+
         <article class="sales__card">
           <h3 class="sales__subtitle">Alta de ventas</h3>
           <button class="button sales__show-modal-btn">Agregar venta</button>
@@ -134,32 +144,30 @@
         <dialog class="sales__dialog">
           <h3 class="sales__subtitle">Datos de la venta a agregar</h3>
           <h4 class="sales__sale">Venta</h4>
-          <span class="sales__article-number">Nro: 3</span>
-          <label class="sales__label" for="articulo">Artículo</label>
-          <select class="sales__select" id="articulo">
-            <option class="sales__article">A001</option>
-            <option class="sales__article">A002</option>
-            <option class="sales__article">A003</option>
+
+          <span class="sales__article-number">Nro: 1</span>
+
+          <label class="sales__label" for="sales__article-select">Artículo</label>
+          <select class="sales__select sales__article-select" id="sales__article-select"></select>
+
+          <label class="sales__label" for="sales__influencer-select">Influencer</label>
+          <select class="sales__select sales__influencer-select" id="sales__influencer-select"></select>
+
+          <label class="sales__label" for="sales__quantity-input">Cantidad</label>
+          <input class="sales__input sales__quantity-input" type="number" id="sales__quantity-input" />
+
+          <label class="sales__label" for="sales__medium-select">Medio</label>
+          <select class="sales__select sales__medium-select" id="sales__medium-select">
+            <option value="1">1 Instagram</option>
+            <option value="2">2 YouTube</option>
+            <option value="3">3 X</option>
+            <option value="4">4 TikTok</option>
+            <option value="5">5 Facebook</option>
+            <option value="6">6 Otras</option>
           </select>
-          <label class="sales__label" for="influencer">influencer</label>
-          <select class="sales__select" id="influencer">
-            <option class="sales__influencer">Ana Pérez</option>
-            <option class="sales__influencer">Juan Gómez</option>
-            <option class="sales__influencer">Lucía Martínez</option>
-          </select>
-          <label class="sales__label" for="cantidad">Cantidad</label>
-          <input class="sales__input" type="text" id="cantidad" />
-          <label class="sales__label" for="medio">Medio</label>
-          <select class="sales__select" id="medio">
-            <option class="sales__source">1 Instagram</option>
-            <option class="sales__source">2 YouTube</option>
-            <option class="sales__source">3 X</option>
-            <option class="sales__source">4 TikTok</option>
-            <option class="sales__source">5 Facebook</option>
-            <option class="sales__source">6 Otro</option>
-          </select>
+
           <button class="button sales__close-modal-btn">Cancelar</button>
-          <button class="button sales__add-modal-btn">Agregar</button>
+          <button class="button sales__add-sale-btn">Agregar</button>
         </dialog>
 
         <!-- Sales Table Card -->
@@ -183,6 +191,7 @@
             <tbody class="sales__table-body"></tbody>
           </table>
         </article>
+
         <article>
           Grafico de burbujas
         </article>
@@ -209,6 +218,7 @@
         >Iván De León</a
       >
     </footer>
+
     <script src="./js/clases.js"></script>
     <script src="./js/funciones.js"></script>
   </body>

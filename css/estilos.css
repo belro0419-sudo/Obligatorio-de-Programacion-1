@@ -27,7 +27,7 @@ h3 {
 }
 
 h4 {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 article {
@@ -50,7 +50,7 @@ button {
 }
 
 .datos-btn {
-    padding: 10px 40px;
+  padding: 10px 40px;
 }
 
 table,
@@ -67,7 +67,7 @@ th {
 }
 
 th {
-    font-weight: bold;
+  font-weight: bold;
 }
 table button {
   width: 100%;
@@ -81,7 +81,7 @@ table {
 label {
   margin-right: 30px;
   font-family: Arial, Helvetica, sans-serif, Helvetica, sans-serif;
-  font-size: 14px;  
+  font-size: 14px;
 }
 .datos-influencer-btn {
   padding: 7px 30px;
@@ -94,28 +94,33 @@ span {
 }
 
 p {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 13.2px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13.2px;
 }
 
 .tabla-articulos button {
-    padding: 13px 45px;
+  padding: 13px 45px;
 }
 
-select, option {
-    font-family: Arial, Helvetica, sans-serif;
+select,
+option {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 a {
-    text-decoration: none;
-    color: rebeccapurple;
+  text-decoration: none;
+  color: rebeccapurple;
 }
 
 .footer-span {
-    font-size: 1rem;
-    font-weight: bold;
-    margin-right: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-right: 5px;
 }
 
-
-
+.influencers__dialog,
+.articles__dialog,
+.sales__dialog {
+  position: fixed;
+  margin: auto;
+}
