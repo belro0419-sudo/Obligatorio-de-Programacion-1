@@ -93,7 +93,9 @@ const agregarInfluencer = () => {
     alert("La comisión debe ser mayor a 0");
   } else if (sistema.existeMail(mail)) {
     alert("Ya existe un influencer con ese mail");
-  } else {
+   } else if (mail.indexOf("@") === -1) {
+    alert("El email es incorrecto");
+    } else {
     sistema.agregarInfluencer(nombre, mail, comision);
 
     influencerNameInput.value = "";
