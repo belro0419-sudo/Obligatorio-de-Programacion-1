@@ -26,7 +26,7 @@ class Sistema {
       articulo,
       influencer,
       cantidad,
-      medio
+      medio,
     );
 
     this.ventas.push(venta);
@@ -68,16 +68,16 @@ class Sistema {
   }
 
   buscarArticulo(codigo) {
-  let articuloBuscado = null;
+    let articuloBuscado = null;
 
-  for (let i = 0; i < this.articulos.length; i++) {
-    if (this.articulos[i].codigo.toLowerCase() === codigo.toLowerCase()) {
-      articuloBuscado = this.articulos[i];
+    for (let i = 0; i < this.articulos.length; i++) {
+      if (this.articulos[i].codigo.toLowerCase() === codigo.toLowerCase()) {
+        articuloBuscado = this.articulos[i];
+      }
     }
-  }
 
-  return articuloBuscado;
-}
+    return articuloBuscado;
+  }
 
   buscarInfluencer(mail) {
     mail = mail.toLowerCase();
@@ -92,7 +92,7 @@ class Sistema {
     return influencerBuscado;
   }
 
-    ordenarInfluencersPorNombre(ascendente) {
+  ordenarInfluencersPorNombre(ascendente) {
     for (let i = 0; i < this.influencers.length - 1; i++) {
       for (let j = i + 1; j < this.influencers.length; j++) {
         let nombreI = this.influencers[i].nombre.toLowerCase();
@@ -102,9 +102,9 @@ class Sistema {
           (ascendente && nombreI > nombreJ) ||
           (!ascendente && nombreI < nombreJ)
         ) {
-          let aux = this.influencers[i];
+          let auxiliar = this.influencers[i];
           this.influencers[i] = this.influencers[j];
-          this.influencers[j] = aux;
+          this.influencers[j] = auxiliar;
         }
       }
     }
@@ -120,9 +120,9 @@ class Sistema {
           (ascendente && codigoI > codigoJ) ||
           (!ascendente && codigoI < codigoJ)
         ) {
-          let aux = this.articulos[i];
+          let auxiliar = this.articulos[i];
           this.articulos[i] = this.articulos[j];
-          this.articulos[j] = aux;
+          this.articulos[j] = auxiliar;
         }
       }
     }
@@ -198,20 +198,20 @@ class Sistema {
   }
 
   obtenerEtiquetasInfluencer(influencer) {
-    let etiquetas = "";
+    let etiquetas = '';
     let totalComisiones = this.calcularTotalComisionesInfluencer(influencer);
     let mayorComision = this.obtenerMayorComision();
 
     if (mayorComision > 0 && totalComisiones === mayorComision) {
-      etiquetas += "🔥";
+      etiquetas += '🔥';
     }
 
     if (this.contarVentasInfluencer(influencer) === 0) {
-      etiquetas += "🧊";
+      etiquetas += '🧊';
     }
 
     if (this.influencerTieneVentaMasCara(influencer)) {
-      etiquetas += "🟢";
+      etiquetas += '🟢';
     }
 
     return etiquetas;
@@ -229,9 +229,9 @@ class Sistema {
     for (let i = 0; i < ventasInfluencer.length - 1; i++) {
       for (let j = i + 1; j < ventasInfluencer.length; j++) {
         if (ventasInfluencer[i].numero > ventasInfluencer[j].numero) {
-          let aux = ventasInfluencer[i];
+          let auxiliar = ventasInfluencer[i];
           ventasInfluencer[i] = ventasInfluencer[j];
-          ventasInfluencer[j] = aux;
+          ventasInfluencer[j] = auxiliar;
         }
       }
     }
@@ -319,11 +319,11 @@ class Venta {
   }
 
   nombreMedio() {
-    let medios = ["Instagram", "YouTube", "X", "TikTok", "Facebook", "Otras"];
+    let medios = ['Instagram', 'YouTube', 'X', 'TikTok', 'Facebook', 'Otras'];
     return medios[this.medio - 1];
   }
 
   textoMedio() {
-    return this.medio + " - " + this.nombreMedio();
+    return this.medio + ' - ' + this.nombreMedio();
   }
 }
