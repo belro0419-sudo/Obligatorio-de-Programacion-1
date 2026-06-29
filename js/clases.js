@@ -95,13 +95,10 @@ class Sistema {
   ordenarInfluencersPorNombre(ascendente) {
     for (let i = 0; i < this.influencers.length - 1; i++) {
       for (let j = i + 1; j < this.influencers.length; j++) {
-        let nombreI = this.influencers[i].nombre.toLowerCase();
-        let nombreJ = this.influencers[j].nombre.toLowerCase();
+        let nombreI = this.influencers[i].nombre.toLowerCase(),
+        nombreJ     = this.influencers[j].nombre.toLowerCase();
 
-        if (
-          (ascendente && nombreI > nombreJ) ||
-          (!ascendente && nombreI < nombreJ)
-        ) {
+        if ((ascendente && nombreI > nombreJ) || (!ascendente && nombreI < nombreJ)) {
           let auxiliar = this.influencers[i];
           this.influencers[i] = this.influencers[j];
           this.influencers[j] = auxiliar;
@@ -113,13 +110,11 @@ class Sistema {
   ordenarArticulosPorCodigo(ascendente) {
     for (let i = 0; i < this.articulos.length - 1; i++) {
       for (let j = i + 1; j < this.articulos.length; j++) {
-        let codigoI = this.articulos[i].codigo.toLowerCase();
-        let codigoJ = this.articulos[j].codigo.toLowerCase();
+        let codigoI = this.articulos[i].codigo.toLowerCase(),
+        codigoJ = this.articulos[j].codigo.toLowerCase();
 
         if (
-          (ascendente && codigoI > codigoJ) ||
-          (!ascendente && codigoI < codigoJ)
-        ) {
+          (ascendente && codigoI > codigoJ) || (!ascendente && codigoI < codigoJ)) {
           let auxiliar = this.articulos[i];
           this.articulos[i] = this.articulos[j];
           this.articulos[j] = auxiliar;
@@ -181,8 +176,8 @@ class Sistema {
   }
 
   influencerTieneVentaMasCara(influencer) {
-    let tiene = false;
-    let mayorVenta = this.obtenerMontoVentaMasCara();
+    let tiene  = false,
+    mayorVenta = this.obtenerMontoVentaMasCara();
 
     for (let i = 0; i < this.ventas.length; i++) {
       if (
@@ -198,9 +193,9 @@ class Sistema {
   }
 
   obtenerEtiquetasInfluencer(influencer) {
-    let etiquetas = '';
-    let totalComisiones = this.calcularTotalComisionesInfluencer(influencer);
-    let mayorComision = this.obtenerMayorComision();
+    let etiquetas   = '',
+    totalComisiones = this.calcularTotalComisionesInfluencer(influencer),
+    mayorComision   = this.obtenerMayorComision();
 
     if (mayorComision > 0 && totalComisiones === mayorComision) {
       etiquetas += '🔥';
@@ -216,8 +211,8 @@ class Sistema {
 
     return etiquetas;
   }
-                  //REVISAR//
-  obtenerVentasDeInfluencer(influencer) {
+
+  obtenerVentasInfluencer(influencer) {
     let ventasInfluencer = [];
 
     for (let i = 0; i < this.ventas.length; i++) {
@@ -265,9 +260,9 @@ class Sistema {
     return mayor;
   }
 
-  articuloEsMasVendido(articulo) {
-    let mayor = this.obtenerMayorCantidadVendidaArticulo();
-    let unidades = this.obtenerUnidadesVendidasArticulo(articulo);
+  articuloMasVendido(articulo) {
+    let mayor = this.obtenerMayorCantidadVendidaArticulo(),
+    unidades  = this.obtenerUnidadesVendidasArticulo(articulo);
 
     return mayor > 0 && unidades === mayor;
   }

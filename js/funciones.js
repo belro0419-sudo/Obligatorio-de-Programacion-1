@@ -5,44 +5,49 @@ let sistema = new Sistema();
 let ordenInfluencersAscendente = true;
 let ordenArticulosAscendente = true;
 
-const botonMostrarModalInfluencer = document.querySelector('.influencers__show-modal-btn',);
-const botonMostrarModalArticulo = document.querySelector('.articles__show-modal-btn',);
-const botonMostrarModalVenta = document.querySelector('.sales__show-modal-btn');
+// Referencia documentos del DOM
 
-const dialogoInfluencer = document.querySelector('.influencers__dialog');
-const dialogoArticulo = document.querySelector('.articles__dialog');
-const dialogoVenta = document.querySelector('.sales__dialog');
-
-const botonCerrarModalInfluencer = document.querySelector('.influencers__close-modal-btn',);
-const botonCerrarModalArticulo = document.querySelector('.articles__close-modal-btn',);
-const botonCerrarModalVenta = document.querySelector('.sales__close-modal-btn');
-
-const botonAgregarInfluencer = document.querySelector('.influencers__add-influencer-btn',);
-const botonAgregarArticulo = document.querySelector('.articles__add-article-btn',);
-const botonAgregarVenta = document.querySelector('.sales__add-sale-btn');
-
-const inputNombreInfluencer = document.querySelector('.influencers__name-input',);
-const inputMailInfluencer = document.querySelector('.influencers__mail-input');
-const inputComisionInfluencer = document.querySelector('.influencers__commission-input',);
-
-const inputCodigoArticulo = document.querySelector('.articles__code-input');
-const inputDescripcionArticulo = document.querySelector('.articles__description-input',);
-const inputPrecioArticulo = document.querySelector('.articles__price-input');
-
-const selectArticuloVenta = document.querySelector('.sales__article-select');
-const selectInfluencerVenta = document.querySelector('.sales__influencer-select',);
-const inputCantidadVenta = document.querySelector('.sales__quantity-input');
-const selectMedioVenta = document.querySelector('.sales__medium-select');
-const spanNumeroVenta = document.querySelector('.sales__article-number');
-
-const cuerpoTablaInfluencers = document.querySelector('.influencers__table-body',);
-const cuerpoTablaArticulos = document.querySelector('.articles__table-body');
-const cuerpoTablaVentas = document.querySelector('.sales__table-body');
-
-const botonOrdenarInfluencers = document.querySelector('.influencers__table-button',);
-const botonOrdenarArticulos = document.querySelector('.articles__table-button');
-
-const graficoBurbujas = document.querySelector('.sales__bubble-chart');
+// Mostrar Modals
+const botonMostrarModalInfluencer = document.querySelector(".influencers__show-modal-btn"),
+botonMostrarModalArticulo         = document.querySelector(".articles__show-modal-btn"),
+botonMostrarModalVenta            = document.querySelector(".sales__show-modal-btn"),
+// Dialogs
+dialogoInfluencer                 = document.querySelector(".influencers__dialog"),
+dialogoArticulo                   = document.querySelector(".articles__dialog"),
+dialogoVenta                      = document.querySelector(".sales__dialog"),
+// Cerrar Modals
+botonCerrarModalInfluencer        = document.querySelector(".influencers__close-modal-btn"),
+botonCerrarModalArticulo          = document.querySelector(".articles__close-modal-btn"),
+botonCerrarModalVenta             = document.querySelector(".sales__close-modal-btn"),
+// Agregar datos tabla 
+botonAgregarInfluencer            = document.querySelector(".influencers__add-influencer-btn"),
+botonAgregarArticulo              = document.querySelector(".articles__add-article-btn"),
+botonAgregarVenta                 = document.querySelector(".sales__add-sale-btn"),
+// Informacion influencer
+inputNombreInfluencer             = document.querySelector(".influencers__name-input"),
+inputMailInfluencer               = document.querySelector(".influencers__mail-input"),
+inputComisionInfluencer           = document.querySelector(".influencers__commission-input"),
+// Informacion articulo
+ inputCodigoArticulo              = document.querySelector(".articles__code-input"),
+ inputDescripcionArticulo         = document.querySelector(".articles__description-input"),
+ inputPrecioArticulo              = document.querySelector(".articles__price-input"),
+// Informacnion venta
+selectArticuloVenta               = document.querySelector(".sales__article-select"),
+selectInfluencerVenta             = document.querySelector(".sales__influencer-select"),
+inputCantidadVenta                = document.querySelector(".sales__quantity-input"),
+selectMedioVenta                  = document.querySelector(".sales__medium-select"),
+spanNumeroVenta                   = document.querySelector(".sales__article-number"),
+// Table bodies
+cuerpoTablaInfluencers            = document.querySelector(".influencers__table-body"),
+cuerpoTablaArticulos              = document.querySelector(".articles__table-body"),
+cuerpoTablaVentas                 = document.querySelector(".sales__table-body"),
+// Botones ordenar tablas 
+botonOrdenarInfluencers           = document.querySelector(".influencers__table-button"),
+botonOrdenarArticulos             = document.querySelector(".articles__table-button"),
+//Grafica
+graficoBurbujas                   = document.querySelector(".sales__bubble-chart"),
+// Boton eliminar ventas
+botonesEliminar = document.querySelectorAll(".sales__delete-btn");
 
 // Control de apertura y cierre de los dialogs
 
@@ -65,10 +70,11 @@ const cerrarModalArticulo = () => {
 const mostrarModalVenta = () => {
   if (sistema.articulos.length === 0 || sistema.influencers.length === 0) {
     alert(
-      'Debe existir al menos un artículo y un influencer para registrar una venta',
+      "Debe existir al menos un artículo y un influencer para registrar una venta",
     );
   } else {
-    spanNumeroVenta.textContent = 'Nro: ' + sistema.proximoNumeroVenta;
+    // Inicializacion del numero de ventas
+    spanNumeroVenta.textContent = "Nro: " + sistema.proximoNumeroVenta;
     dialogoVenta.showModal();
   }
 };
@@ -86,25 +92,27 @@ const actualizarTodo = () => {
   actualizarGraficoBurbujas();
 };
 
-const agregarInfluencer = () => {
-  let nombre = inputNombreInfluencer.value;
-  let mail = inputMailInfluencer.value.toLowerCase();
-  let comision = Number(inputComisionInfluencer.value);
+// Logica influencers
 
-  if (nombre === '' || mail === '' || inputComisionInfluencer.value === '') {
-    alert('Todos los campos son obligatorios');
+const agregarInfluencer = () => {
+  let nombre   = inputNombreInfluencer.value,
+  mail         = inputMailInfluencer.value.toLowerCase(),
+  comision     = Number(inputComisionInfluencer.value);
+
+  if (nombre === "" || mail === "" || inputComisionInfluencer.value === "") {
+    alert("Todos los campos son obligatorios");
   } else if (comision <= 0) {
-    alert('La comisión debe ser mayor a 0');
+    alert("La comisión debe ser mayor a 0");
   } else if (sistema.existeMail(mail)) {
-    alert('Ya existe un influencer con ese mail');
-  } else if (!mail.includes('@')) {
-    alert('El email debe tener un @');
+    alert("Ya existe un influencer con ese mail");
+  } else if (!mail.includes("@")) {
+    alert("El email debe tener un @");
   } else {
     sistema.agregarInfluencer(nombre, mail, comision);
 
-    inputNombreInfluencer.value = '';
-    inputMailInfluencer.value = '';
-    inputComisionInfluencer.value = '';
+    inputNombreInfluencer.value = "";
+    inputMailInfluencer.value = "";
+    inputComisionInfluencer.value = "";
 
     actualizarTodo();
   }
@@ -112,12 +120,11 @@ const agregarInfluencer = () => {
 
 const actualizarTablaInfluencers = () => {
   sistema.ordenarInfluencersPorNombre(ordenInfluencersAscendente);
-  cuerpoTablaInfluencers.innerHTML = '';
-              //REVISARER//
+  cuerpoTablaInfluencers.innerHTML = "";
   for (let i = 0; i < sistema.influencers.length; i++) {
-    let influencer = sistema.influencers[i];
-    let totalComisiones = sistema.calcularTotalComisionesInfluencer(influencer);
-    let etiquetas = sistema.obtenerEtiquetasInfluencer(influencer);
+    let influencer  = sistema.influencers[i],
+    totalComisiones = sistema.calcularTotalComisionesInfluencer(influencer),
+    etiquetas       = sistema.obtenerEtiquetasInfluencer(influencer);
 
     cuerpoTablaInfluencers.innerHTML += `
       <tr class="influencers__table-row">
@@ -127,50 +134,52 @@ const actualizarTablaInfluencers = () => {
         <td class="influencers__table-cell">$${totalComisiones}</td>
         <td class="influencers__table-cell">${etiquetas}</td>
         <td class="influencers__table-cell">
-          <button type="button" class="button influencers__sales-detail-btn" data-mail="${influencer.mail}">
-            Ventas
-          </button>
+        <button type="button" class="button influencers__sales-detail-btn">
+          Ventas
+        </button>
         </td>
       </tr>
     `;
   }
 
   const botonesDetalle = document.querySelectorAll(
-    '.influencers__sales-detail-btn',
+    ".influencers__sales-detail-btn",
   );
 
   for (let i = 0; i < botonesDetalle.length; i++) {
-    botonesDetalle[i].addEventListener('click', mostrarDetalleVentasInfluencer);
+    let influencer = sistema.influencers[i];
+
+    botonesDetalle[i].addEventListener("click", function () {
+      mostrarDetalleVentasInfluencer(influencer);
+    });
   }
 };
 
-const mostrarDetalleVentasInfluencer = (evento) => {
-  let mail = evento.target.dataset.mail;  //revisar//
-  let influencer = sistema.buscarInfluencer(mail);
-  let ventas = sistema.obtenerVentasDeInfluencer(influencer);
+const mostrarDetalleVentasInfluencer = (influencer) => {
+  let ventas = sistema.obtenerVentasInfluencer(influencer);
 
   if (ventas.length === 0) {
-    alert('El influencer ' + influencer.nombre + ' no tiene ventas.');
+    alert("El influencer " + influencer.nombre + " no tiene ventas.");
   } else {
-    let mensaje = 'Ventas de ' + influencer.nombre + ':\n\n';
+    let mensaje = "Ventas de " + influencer.nombre + ":\n\n";
 
     for (let i = 0; i < ventas.length; i++) {
       let venta = ventas[i];
 
       mensaje +=
-        'Nro ' +
+        "Nro " +
         venta.numero +
-        ' - ' +
+        " ⇥ " +
         venta.cantidad +
-        ' x ' +
+        " ⇥ " +
         venta.articulo.descripcion +
-        ' - Precio unitario: $' +
+        " ⇥ $" +
         venta.articulo.precio +
-        ' - Total: $' +
+        " c/u Total $" +
         venta.calcularTotal() +
-        ' - Comisión: $' +
+        " ⇥ Comisión: $" +
         venta.calcularComision() +
-        '\n';
+        "\n";
     }
 
     alert(mensaje);
@@ -178,7 +187,7 @@ const mostrarDetalleVentasInfluencer = (evento) => {
 };
 
 const actualizarSelectInfluencers = () => {
-  selectInfluencerVenta.innerHTML = '';
+  selectInfluencerVenta.innerHTML = "";
 
   for (let i = 0; i < sistema.influencers.length; i++) {
     let influencer = sistema.influencers[i];
@@ -189,23 +198,25 @@ const actualizarSelectInfluencers = () => {
   }
 };
 
-const agregarArticulo = () => {
-  let codigo = inputCodigoArticulo.value;
-  let descripcion = inputDescripcionArticulo.value;
-  let precio = Number(inputPrecioArticulo.value);
+// Logica articulos
 
-  if (codigo === '' || descripcion === '' || inputPrecioArticulo.value === '') {
-    alert('Todos los campos son obligatorios');
+const agregarArticulo = () => {
+  let codigo = inputCodigoArticulo.value,
+  descripcion = inputDescripcionArticulo.value,
+  precio = Number(inputPrecioArticulo.value);
+
+  if (codigo === "" || descripcion === "" || inputPrecioArticulo.value === "") {
+    alert("Todos los campos son obligatorios");
   } else if (precio <= 0) {
-    alert('El precio debe ser mayor a 0');
+    alert("El precio debe ser mayor a 0");
   } else if (sistema.existeCodigo(codigo)) {
-    alert('Ya existe un artículo con ese código');
+    alert("Ya existe un artículo con ese código");
   } else {
     sistema.agregarArticulo(codigo, descripcion, precio);
 
-    inputCodigoArticulo.value = '';
-    inputDescripcionArticulo.value = '';
-    inputPrecioArticulo.value = '';
+    inputCodigoArticulo.value = "";
+    inputDescripcionArticulo.value = "";
+    inputPrecioArticulo.value = "";
 
     actualizarTodo();
   }
@@ -213,14 +224,14 @@ const agregarArticulo = () => {
 
 const actualizarTablaArticulos = () => {
   sistema.ordenarArticulosPorCodigo(ordenArticulosAscendente);
-  cuerpoTablaArticulos.innerHTML = '';
+  cuerpoTablaArticulos.innerHTML = "";
 
   for (let i = 0; i < sistema.articulos.length; i++) {
     let articulo = sistema.articulos[i];
-    let medalla = '';
+    let medalla = "";
 
-    if (sistema.articuloEsMasVendido(articulo)) {
-      medalla = ' ⭐';
+    if (sistema.articuloMasVendido(articulo)) {
+      medalla = " ⭐";
     }
 
     cuerpoTablaArticulos.innerHTML += `
@@ -234,7 +245,7 @@ const actualizarTablaArticulos = () => {
 };
 
 const actualizarSelectArticulos = () => {
-  selectArticuloVenta.innerHTML = '';
+  selectArticuloVenta.innerHTML = "";
 
   for (let i = 0; i < sistema.articulos.length; i++) {
     let articulo = sistema.articulos[i];
@@ -245,31 +256,33 @@ const actualizarSelectArticulos = () => {
   }
 };
 
+// Logica ventas
+
 const agregarVenta = () => {
-  let codigoArticulo = selectArticuloVenta.value;
-  let mailInfluencer = selectInfluencerVenta.value;
-  let cantidad = Number(inputCantidadVenta.value);
-  let medio = Number(selectMedioVenta.value);
+  let codigoArticulo = selectArticuloVenta.value,
+  mailInfluencer     = selectInfluencerVenta.value,
+  cantidad           = Number(inputCantidadVenta.value),
+  medio              = Number(selectMedioVenta.value),
+// Datos previamente requeridos
+  articulo           = sistema.buscarArticulo(codigoArticulo),
+  influencer         = sistema.buscarInfluencer(mailInfluencer);
 
-  let articulo = sistema.buscarArticulo(codigoArticulo);
-  let influencer = sistema.buscarInfluencer(mailInfluencer);
-
-  if (inputCantidadVenta.value === '') {
-    alert('La cantidad es obligatoria');
+  if (inputCantidadVenta.value === "") {
+    alert("La cantidad es obligatoria");
   } else if (cantidad <= 0) {
-    alert('La cantidad debe ser mayor a 0');
+    alert("La cantidad debe ser mayor a 0");
   } else {
     sistema.agregarVenta(articulo, influencer, cantidad, medio);
 
-    inputCantidadVenta.value = '';
-    spanNumeroVenta.textContent = 'Nro: ' + sistema.proximoNumeroVenta;
+    inputCantidadVenta.value = "";
+    spanNumeroVenta.textContent = "Nro: " + sistema.proximoNumeroVenta;
 
     actualizarTodo();
   }
 };
 
 const actualizarTablaVentas = () => {
-  cuerpoTablaVentas.innerHTML = '';
+  cuerpoTablaVentas.innerHTML = "";
 
   for (let i = 0; i < sistema.ventas.length; i++) {
     let venta = sistema.ventas[i];
@@ -282,46 +295,49 @@ const actualizarTablaVentas = () => {
         <td class="sales__table-cell">${venta.cantidad}</td>
         <td class="sales__table-cell">${venta.textoMedio()}</td>
         <td class="sales__table-cell">
-          <button type="button" class="button sales__delete-btn" data-number="${venta.numero}">
-            Eliminar
-          </button>
+          <button class="button sales__delete-btn">
+  ❌
+</button>
         </td>
       </tr>
     `;
   }
-
-  const botonesEliminar = document.querySelectorAll('.sales__delete-btn');
-
-  for (let i = 0; i < botonesEliminar.length; i++) {
-    botonesEliminar[i].addEventListener('click', eliminarVenta);
-  }
 };
 
-const eliminarVenta = (evento) => {
-  let numero = Number(evento.target.dataset.number);
-  let confirma = confirm('¿Seguro que desea eliminar esta venta?');
+for (let i = 0; i < botonesEliminar.length; i++) {
+  let venta = sistema.ventas[i];
+
+  botonesEliminar[i].addEventListener("click", function () {
+    eliminarVenta(venta.numero);
+  });
+}
+
+const eliminarVenta = (numero) => {
+  let confirma = confirm("¿Eliminar la fila?");
 
   if (confirma) {
     sistema.eliminarVenta(numero);
     actualizarTodo();
   }
 };
-            //revisar//
+
+// Logica grafico de burbujas
+
 const actualizarGraficoBurbujas = () => {
   if (graficoBurbujas === null) {
     return;
   }
 
-  let nombres = ['Instagram', 'YouTube', 'X', 'TikTok', 'Facebook', 'Otras'];
-  let clases = ['instagram', 'youtube', 'x', 'tiktok', 'facebook', 'otras'];
-  let totales = [];
+  let nombres = ["Instagram", "YouTube", "X", "TikTok", "Facebook", "Otras"],
+  clases = ["instagram", "youtube", "x", "tiktok", "facebook", "otras"],
+  totales = [];
 
   for (let i = 1; i <= 6; i++) {
     totales.push(sistema.obtenerTotalVendidoPorMedio(i));
   }
 
-  let maximo = 0;
-  let minimo = totales[0];
+  let maximo = 0,
+  minimo = totales[0];
 
   for (let i = 0; i < totales.length; i++) {
     if (totales[i] > maximo) {
@@ -333,7 +349,7 @@ const actualizarGraficoBurbujas = () => {
     }
   }
 
-  graficoBurbujas.innerHTML = '';
+  graficoBurbujas.innerHTML = "";
 
   for (let i = 0; i < totales.length; i++) {
     let radio = calcularRadioBurbuja(totales[i], minimo, maximo);
@@ -353,8 +369,8 @@ const actualizarGraficoBurbujas = () => {
 };
 
 const calcularRadioBurbuja = (valor, minimo, maximo) => {
-  let radioMinimo = 0.5;
-  let radioMaximo = 5;
+  let radioMinimo = 0.5,
+  radioMaximo = 5;
 
   if (maximo === 0) {
     return radioMinimo;
@@ -370,6 +386,8 @@ const calcularRadioBurbuja = (valor, minimo, maximo) => {
   );
 };
 
+// Logica orden ascendente y descendente de tablas
+
 const ordenarInfluencers = () => {
   ordenInfluencersAscendente = !ordenInfluencersAscendente;
   actualizarTablaInfluencers();
@@ -380,19 +398,22 @@ const ordenarArticulos = () => {
   actualizarTablaArticulos();
 };
 
-botonMostrarModalInfluencer.addEventListener('click', mostrarModalInfluencer);
-botonMostrarModalArticulo.addEventListener('click', mostrarModalArticulo);
-botonMostrarModalVenta.addEventListener('click', mostrarModalVenta);
+// Event Listeners
 
-botonCerrarModalInfluencer.addEventListener('click', cerrarModalInfluencer);
-botonCerrarModalArticulo.addEventListener('click', cerrarModalArticulo);
-botonCerrarModalVenta.addEventListener('click', cerrarModalVenta);
-
-botonAgregarInfluencer.addEventListener('click', agregarInfluencer);
-botonAgregarArticulo.addEventListener('click', agregarArticulo);
-botonAgregarVenta.addEventListener('click', agregarVenta);
-
-botonOrdenarInfluencers.addEventListener('click', ordenarInfluencers);
-botonOrdenarArticulos.addEventListener('click', ordenarArticulos);
+// Mostrar modals
+botonMostrarModalInfluencer.addEventListener("click", mostrarModalInfluencer);
+botonMostrarModalArticulo.addEventListener("click", mostrarModalArticulo);
+botonMostrarModalVenta.addEventListener("click", mostrarModalVenta);
+// Cerrar modals
+botonCerrarModalInfluencer.addEventListener("click", cerrarModalInfluencer);
+botonCerrarModalArticulo.addEventListener("click", cerrarModalArticulo);
+botonCerrarModalVenta.addEventListener("click", cerrarModalVenta);
+// Agregar datos
+botonAgregarInfluencer.addEventListener("click", agregarInfluencer);
+botonAgregarArticulo.addEventListener("click", agregarArticulo);
+botonAgregarVenta.addEventListener("click", agregarVenta);
+// Ordenar tablas influencers y articulos
+botonOrdenarInfluencers.addEventListener("click", ordenarInfluencers);
+botonOrdenarArticulos.addEventListener("click", ordenarArticulos);
 
 actualizarTodo();

@@ -29,6 +29,7 @@
         <!-- Influencers Modal -->
         <article class="influencers__modal-card">
           <dialog class="influencers__dialog">
+            <form>
             <h3 class="influencers__subtitle">
               Datos del influencer a agregar
             </h3>
@@ -45,10 +46,10 @@
             <label class="influencers__label" for="influencers__commission-input">% Comisión</label>
             <input required class="influencers__input influencers__commission-input" type="number" id="influencers__commission-input">
 
-            <button type="button" class="button influencers__close-modal-btn">Cancelar</button>
-            <button type="button" class="button influencers__add-influencer-btn">
-              Agregar
-            </button>
+            <button class="button influencers__close-modal-btn">Cancelar</button>
+            <input type="submit" value="Agregar" class="button influencers__add-influencer-btn">
+          
+            </form>
           </dialog>
         </article>
 
@@ -92,6 +93,7 @@
         <!-- Articles Modal -->
         <article class="articles__modal-card">
           <dialog class="articles__dialog">
+            <form>
             <h3 class="articles__subtitle">Datos del artículo a agregar</h3>
             <h4 class="articles__subsubtitle">Artículo</h4>
 
@@ -104,8 +106,9 @@
             <label class="articles__label" for="articles__price-input">Precio</label>
             <input required class="articles__input articles__price-input" type="number" id="articles__price-input">
 
-            <button type="button" class="button articles__close-modal-btn">Cancelar</button>
-            <button type="button" class="button articles__add-article-btn">Agregar</button>
+            <button class="button articles__close-modal-btn">Cancelar</button>
+            <input type="submit" value="Agregar" class="button articles__add-article-btn">
+            </form>
           </dialog>
         </article>
 
@@ -146,6 +149,7 @@
         <!-- Sales Modal Card -->
         <article class="sales__modal-card">
           <dialog class="sales__dialog">
+            <form>
             <h3 class="sales__subtitle">Datos de la venta a agregar</h3>
             <h4 class="sales__subsubtitle">Venta</h4>
 
@@ -170,8 +174,9 @@
               <option value="6">6 Otras</option>
             </select>
 
-            <button type="button" class="button sales__close-modal-btn">Cancelar</button>
-            <button type="button" class="button sales__add-sale-btn">Agregar</button>
+            <button class="button sales__close-modal-btn">Cancelar</button>
+            <input type="submit" value="Agregar" class="button sales__add-sale-btn">
+            </form>
           </dialog>
         </article>
 
@@ -206,14 +211,23 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <h4 class="footer__name">Belen Rodríguez - N.º de estudiante: 373879</h4>
-      <span class="footer__linkedin">LinkedIn:</span>
-      <a class="footer__link" href="https://www.linkedin.com/in/belen-rodriguez-2a7148371/" target="_blank">Belen Rodríguez</a>
-
-      <h4 class="footer__name">Iván De León - N.º de estudiante: 330339</h4>
-      <span class="footer__linkedin">LinkedIn:</span>
-      <a class="footer__link" href="https://www.linkedin.com/in/ivan-de-leon-lino/?isSelfProfile=false" target="_blank">Iván De León</a>
-    </footer>
+  <p class="footer__text">
+    Sitio para el Obligatorio de Programación 1 desarrollado por
+    <a
+      class="footer__link"
+      href="https://www.linkedin.com/in/belen-rodriguez-2a7148371/"
+      target="_blank"
+    >
+      Ana Belen Rodriguez Berriel
+    </a>
+    y
+    <a
+      class="footer__link"
+      href="https://www.linkedin.com/in/ivan-de-leon-lino/?isSelfProfile=false"
+      target="_blank"
+    >
+      Ivan De Leon Lino
+    </a>
 
     <script src="./js/clases.js"></script>
     <script src="./js/funciones.js"></script>
